@@ -1,0 +1,216 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Perpustakaan Online Pro</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 20px;
+  background: #2c3e50;
+  color: white;
+}
+
+/* HALAMAN */
+.page {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/* LIST BUKU */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.book {
+  background: white;
+  width: 230px;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+/* HALAMAN BACA */
+.reader {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #3498db;
+  color: white;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #2c3e50;
+  color: white;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📚 Perpustakaan Online</h1>
+  <p>Pilih Buku & Nikmati Membaca</p>
+</header>
+
+<!-- ================= HALAMAN 1 ================= -->
+<div id="home" class="page active">
+  <div class="container">
+
+    <div class="book" onclick="baca('Sejarah Dunia', sejarah)">
+      <h3>📜 Sejarah Dunia</h3>
+      <p>Kisah nyata Perang Dunia</p>
+    </div>
+
+    <div class="book" onclick="baca('Horor Nyata', horor)">
+      <h3>👻 Horor Nyata</h3>
+      <p>Pengalaman mistis nyata</p>
+    </div>
+
+    <div class="book" onclick="baca('Kisah Cinta', cinta)">
+      <h3>❤️ Romantis</h3>
+      <p>Kisah cinta dari dunia nyata</p>
+    </div>
+
+    <div class="book" onclick="baca('Inspirasi Hidup', inspirasi)">
+      <h3>🌟 Inspirasi</h3>
+      <p>Perjalanan hidup sukses</p>
+    </div>
+
+    <div class="book" onclick="baca('Petualangan Nyata', petualangan)">
+      <h3>🏔️ Petualangan</h3>
+      <p>Kisah perjalanan ekstrem</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= HALAMAN 2 ================= -->
+<div id="read" class="page">
+  <div class="reader">
+    <h2 id="judul"></h2>
+    <p id="isi"></p>
+
+    <button onclick="kembali()">⬅ Kembali</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Perpustakaan Online | Gugun</p>
+</footer>
+
+<script>
+// ================= DATA BUKU =================
+
+const sejarah = `
+Perang Dunia II adalah salah satu peristiwa paling bersejarah di dunia.
+Perang ini melibatkan banyak negara besar dan menyebabkan jutaan korban jiwa.
+Dimulai pada tahun 1939, konflik ini dipicu oleh invasi Jerman ke Polandia.
+Banyak negara kemudian ikut terlibat, termasuk Inggris, Amerika Serikat, dan Uni Soviet.
+
+Selama perang, berbagai teknologi militer berkembang pesat.
+Namun, dampak paling besar adalah kehancuran dan penderitaan manusia.
+Perang ini berakhir pada tahun 1945 setelah Jepang menyerah.
+Peristiwa ini mengubah tatanan dunia dan melahirkan era baru perdamaian internasional.
+`;
+
+const horor = `
+Di sebuah desa terpencil, seorang warga pernah mengalami kejadian aneh.
+Setiap malam, terdengar suara langkah kaki di atap rumahnya.
+Awalnya ia mengira itu hanya hewan, namun suara itu terdengar semakin jelas.
+
+Suatu malam, ia memberanikan diri keluar untuk melihat.
+Tidak ada siapa-siapa, tetapi suara itu tetap ada.
+Beberapa warga lain juga mengaku mengalami hal serupa.
+Kejadian ini menjadi cerita nyata yang terus dikenang hingga sekarang.
+`;
+
+const cinta = `
+Kisah ini berasal dari dua orang yang bertemu secara tidak sengaja.
+Mereka awalnya hanya teman biasa, namun seiring waktu mulai saling menyukai.
+Perjalanan cinta mereka tidak mudah, banyak rintangan yang harus dilalui.
+
+Namun dengan kesabaran dan kepercayaan, mereka berhasil melewati semuanya.
+Kisah ini menjadi bukti bahwa cinta sejati memang ada.
+Dan terkadang datang di waktu yang tidak terduga.
+`;
+
+const inspirasi = `
+Seorang anak yang lahir dari keluarga sederhana memiliki mimpi besar.
+Ia terus belajar dan tidak pernah menyerah meskipun banyak kesulitan.
+Setiap hari ia berusaha menjadi lebih baik.
+
+Tahun demi tahun berlalu, kerja kerasnya mulai membuahkan hasil.
+Ia berhasil meraih kesuksesan dan mengubah hidup keluarganya.
+Kisah ini menjadi inspirasi bahwa usaha tidak akan mengkhianati hasil.
+`;
+
+const petualangan = `
+Seorang pendaki memulai perjalanan menuju puncak gunung tinggi.
+Perjalanan ini penuh dengan tantangan seperti cuaca buruk dan medan sulit.
+Namun semangatnya tidak pernah padam.
+
+Di tengah perjalanan, ia hampir menyerah.
+Tetapi dengan tekad kuat, ia melanjutkan langkahnya.
+Akhirnya, ia berhasil mencapai puncak dan menyaksikan keindahan luar biasa.
+Pengalaman ini menjadi kisah nyata yang tak terlupakan.
+`;
+
+
+// ================= FUNGSI =================
+
+function baca(judul, isi) {
+  document.getElementById("judul").innerText = judul;
+  document.getElementById("isi").innerText = isi;
+
+  document.getElementById("home").classList.remove("active");
+  document.getElementById("read").classList.add("active");
+}
+
+function kembali() {
+  document.getElementById("read").classList.remove("active");
+  document.getElementById("home").classList.add("active");
+}
+</script>
+
+</body>
+</html>
